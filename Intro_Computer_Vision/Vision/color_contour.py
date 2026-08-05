@@ -3,10 +3,13 @@ import cvzone
 from cvzone.ColorModule import ColorFinder
 from cvzone.Utils import findContours
 
-vid = cv2.VideoCapture(0)
+Cam = 0
+vid = cv2.VideoCapture(Cam)
 
+#                                    True to reset color det.
 myColorFinder = ColorFinder(trackBar=False)
 
+# empty the bracket to reset color det.
 hsvVal = {'hmin': 108, 'smin': 67, 'vmin': 63, 'hmax': 179, 'smax': 255, 'vmax': 255}
 
 while True:
@@ -15,9 +18,13 @@ while True:
     if not success:
         break
 
+    #updating the HSV
     imgColor, mask = myColorFinder.update(img, hsvVal)
+
+    #added features for detecting pos and draw
     img_contour, conFound = findContours(img, mask)
 
+    #display multi imgs.
     imgStack = cvzone.stackImages([img, imgColor, mask, img_contour], 4, 0.2)
 
     #given x and y position 
