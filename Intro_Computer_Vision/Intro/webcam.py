@@ -1,6 +1,8 @@
 import cv2
 
-vid = cv2.VideoCapture(0)
+#capture local web cam, adjust webcam if needed
+cam = 0
+vid = cv2.VideoCapture(cam)
 
 while True:
     success, img = vid.read()
