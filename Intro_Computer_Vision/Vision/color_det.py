@@ -2,8 +2,10 @@ import cv2
 import cvzone
 from cvzone.ColorModule import ColorFinder
 
-vid = cv2.VideoCapture(0)
+Cam = 0
+vid = cv2.VideoCapture(Cam)
 
+# a debug-like in color and mask
 myColorFinder = ColorFinder(trackBar=False)
 
 hsvVal = {'hmin': 108, 'smin': 67, 'vmin': 63, 'hmax': 179, 'smax': 255, 'vmax': 255}
@@ -16,7 +18,9 @@ while True:
 
     imgColor, mask = myColorFinder.update(img, hsvVal)
 
-    imgStack = cvzone.stackImages([img, imgColor, mask], 3, 0.2)
+    columns = 3
+    displaySize = 0.3
+    imgStack = cvzone.stackImages([img, imgColor, mask], columns, displaySize)
 
     cv2.imshow("Color detection", imgStack)
 
