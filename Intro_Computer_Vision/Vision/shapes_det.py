@@ -18,5 +18,6 @@ Columns = 3
 imgStack = cvzone.stackImages([img, imgGray, grayCanny, gray_dilate, gray_imgContours],
                                                         Columns, imgPresentSize)
 
+print(conFound)
 cv2.imshow("img", imgStack)
 cv2.waitKey(0)
