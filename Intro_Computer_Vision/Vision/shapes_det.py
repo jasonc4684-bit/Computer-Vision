@@ -3,7 +3,7 @@ import cvzone
 import numpy as np
 from cvzone.Utils import findContours
 
-img = cv2.imread("../Computer_vision_essential/vision_features/img.jpg")
+img = cv2.imread("Intro_Computer_Vision/Vision/img.jpg")
 
 imgBlur = cv2.GaussianBlur(img, (75, 75), 0)
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -18,7 +18,7 @@ gray_imgContours, conFound = findContours(img, gray_dilate, filter= None, drawCo
 blur_imgContours, conFound = findContours(img, blur_dilate, filter= None, drawCon= True)
 
 imgStack = cvzone.stackImages([img, imgGray, grayCanny, gray_dilate, gray_imgContours, 
-                                img, imgBlur, blurCanny, blur_dilate, blur_imgContours], 5, 0.6)
+                                img, imgBlur, blurCanny, blur_dilate, blur_imgContours], 5, 0.25)
 
 cv2.imshow("img", imgStack)
 cv2.waitKey(0)

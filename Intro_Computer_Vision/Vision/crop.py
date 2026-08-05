@@ -1,6 +1,6 @@
 import cv2
 
-img = cv2.imread("../Computer_vision_essential/intro/school.jpg")
+img = cv2.imread("Intro_Computer_Vision/Intro/school.jpg")
 
 #         [y1:y2, x1:x2]
 crop = img[100:2000, 10:1200]
