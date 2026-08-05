@@ -1,9 +1,15 @@
 import cv2
 
-img = cv2.imread("Intro_Computer_Vision/Intro/school.jpg")
+#read files
+IMG = "Intro_Computer_Vision/Intro/school.jpg"
+img = cv2.imread(IMG)
 
 #         [y1:y2, x1:x2]
-crop = img[100:2000, 10:1200]
+y1 = 0
+y2 = 10
+x1=10
+x2=20
+crop = img[y1:y2, x1:x2]
 
 cv2.imshow("img", img)
 cv2.imshow("crop img", crop)
