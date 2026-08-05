@@ -3,13 +3,17 @@ import cvzone
 import numpy as np
 from cvzone.Utils import findContours
 
-img = cv2.imread("Intro_Computer_Vision/Vision/img.jpg")
+Img = "Intro_Computer_Vision/Vision/img.jpg"
+img = cv2.imread(Img)
 
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-grayCanny = cv2.Canny(imgGray, 100, 250)
+lower_bound = 100
+high_bound = 250
+grayCanny = cv2.Canny(imgGray, lower_bound, high_bound)
 
-gray_dilate = cv2.dilate(grayCanny, np.ones((5, 5), np.uint8), iterations=2)
+newArraySize = (5,5)
+gray_dilate = cv2.dilate(grayCanny, np.ones(newArraySize, np.uint8), iterations=2)
 
 gray_imgContours, conFound = findContours(img, gray_dilate, filter= None, drawCon= True)
 
