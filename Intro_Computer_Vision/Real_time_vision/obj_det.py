@@ -12,15 +12,19 @@ model = YOLO(yoloModel)
 while True:
     success, img = vid.read()
     results = model(img, stream=True)
+
     for result in results:
         for box in result.boxes:
+
             x1, y1, x2, y2 = map(int, box.xyxy[0])
             width, height = x2-x1, y2-y1
             conf = int(box.conf[0] * 100)
-            cls = box.cls[0]
+            cls = int(box.cls[0])
             name = model.names[cls]
-            cvzone.cornerRect(img, x1, y1, width, height)
             pos = (x1, y1-10)
+            bbox = (x1, y1, width, height)
+
+            cvzone.cornerRect(img, bbox)
             cvzone.putTextRect(img, f"{name} {conf}", pos, scale=1)
 
     if not success:
