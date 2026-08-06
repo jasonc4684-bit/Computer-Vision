@@ -9,7 +9,9 @@ vid = cv2.VideoCapture(cam)
 
 while True:
     success, img = vid.read()
-
+    img, bboxes = detector.findFaces(img)
+    if bboxes:
+        center = bboxes[0]['center']
     if not success:
         break
     cv2.imshow("Video of falling tree", img)
