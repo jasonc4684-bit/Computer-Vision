@@ -9,15 +9,18 @@ vid = cv2.VideoCapture(cam)
 
 while True:
     success, img = vid.read()
-    img, bboxes = detector.findHands(img)
+    hands, img = detector.findHands(img)
 
-    if bboxes:
-        center = bboxes[0]['center']
+    if hands:
+        hand1 = hands[0]
+        #landmark list on hand
+        lmlist = hand1['lmlist']
+        handType = hand1['handType']
 
     if not success:
         break
     
-    cv2.imshow("Video of falling tree", img)
+    cv2.imshow("hand det", img)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

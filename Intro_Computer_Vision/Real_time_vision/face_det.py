@@ -16,8 +16,8 @@ while True:
 
     if not success:
         break
-    
-    cv2.imshow("Video of falling tree", img)
+
+    cv2.imshow("face det", img)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
