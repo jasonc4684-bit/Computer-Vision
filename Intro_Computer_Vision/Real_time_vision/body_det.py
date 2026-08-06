@@ -1,7 +1,7 @@
 import cv2
-from cvzone.HandTrackingModule import HandDetector
+from cvzone.PoseModule import PoseDector
 
-detector = HandDetector(detectionCon=0.8, maxHands=2)
+detector = PoseDector()
 
 #capture local web cam, adjust webcam if needed
 cam = 0 # primary cam for laptop 
@@ -9,7 +9,8 @@ vid = cv2.VideoCapture(cam)
 
 while True:
     success, img = vid.read()
-    hands, img = detector.findHands(img)
+    img = detector.findPose(img)
+    lmlist, bboxes = detector.findPosition()
 
     if hands:
         hand1 = hands[0]
