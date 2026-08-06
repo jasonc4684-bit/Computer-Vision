@@ -1,7 +1,7 @@
 import cv2
-from cvzone.FaceDetectionModule import FaceDetector
+from cvzone.HandTrackingModule import HandDetector
 
-detector = FaceDetector()
+detector = HandDetector(detectionCon=0.8, maxHands=2)
 
 #capture local web cam, adjust webcam if needed
 cam = 0 # primary cam for laptop 
@@ -9,7 +9,7 @@ vid = cv2.VideoCapture(cam)
 
 while True:
     success, img = vid.read()
-    img, bboxes = detector.findFaces(img)
+    img, bboxes = detector.findHands(img)
 
     if bboxes:
         center = bboxes[0]['center']
