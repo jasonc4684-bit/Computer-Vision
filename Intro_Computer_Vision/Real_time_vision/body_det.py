@@ -10,7 +10,7 @@ vid = cv2.VideoCapture(cam)
 while True:
     success, img = vid.read()
     img = detector.findPose(img)
-    lmlist, bboxes = detector.findPosition()
+    lmlist, bboxes = detector.findPosition(img)
 
     if bboxes:
         center = bboxes['center']
