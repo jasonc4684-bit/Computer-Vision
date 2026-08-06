@@ -1,7 +1,7 @@
 import cv2
-from cvzone.PoseModule import PoseDector
+from cvzone.PoseModule import PoseDetector
 
-detector = PoseDector()
+detector = PoseDetector()
 
 #capture local web cam, adjust webcam if needed
 cam = 0 # primary cam for laptop 
@@ -12,16 +12,12 @@ while True:
     img = detector.findPose(img)
     lmlist, bboxes = detector.findPosition()
 
-    if hands:
-        hand1 = hands[0]
-        #landmark list on hand
-        lmlist = hand1['lmList']
-        handType = hand1['type']
-
+    if bboxes:
+        center = bboxes['center']
     if not success:
         break
     
-    cv2.imshow("hand det", img)
+    cv2.imshow("body det", img)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
