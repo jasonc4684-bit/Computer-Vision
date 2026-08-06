@@ -6,11 +6,14 @@ import cvzone
 cam = 0
 vid = cv2.VideoCapture(cam)
 
-yoloModel = "yolo26m.pt" # change "s" if larger data is needed (ex."m")
+yoloModel = "yolo26s.pt" # change "s" if larger data is needed (ex."m")
 model = YOLO(yoloModel)
 
 while True:
     success, img = vid.read()
+    if not success:
+        break
+    
     results = model(img, stream=True)
 
     for result in results:
@@ -27,8 +30,6 @@ while True:
             cvzone.cornerRect(img, bbox)
             cvzone.putTextRect(img, f"{name} {conf}", pos, scale=1)
 
-    if not success:
-        break
     cv2.imshow("obj_det", img)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
