@@ -15,10 +15,13 @@ while True:
     for result in results:
         for box in result.boxes:
             x1, y1, x2, y2 = map(int, box.xyxy[0])
-            w, h = x2-x1, y2-y1
+            width, height = x2-x1, y2-y1
             conf = int(box.conf[0] * 100)
             cls = box.cls[0]
             name = model.names[cls]
+            cvzone.cornerRect(img, x1, y1, width, height)
+            pos = (x1, y1-10)
+            cvzone.putTextRect(img, f"{name} {conf}", pos, scale=1)
 
     if not success:
         break
