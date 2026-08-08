@@ -4,12 +4,13 @@ from transformers import AutoModelForCausalLM, AutoProcessor
 img = "AI_vision/img.png"
 image = Image.open(img)
 
-processor = TrOCRProcessor.from_pretrained("microsoft/trocr-base-printed")
+processor = AutoProcessor.from_pretrained("microsoft/Florence-2-base", trust_remote_code=True)
 model = AutoModelForCausalLM.from_pretrained("microsoft/Florence-2-base", trust_remote_code=True)
 
-pixel_values = processor(images=image, return_tensors='pt').pixel_values
-generated_ids = model.generate(pixel_values)
+inputs = processor(text="<OCR_WITH_REGION>", images=image, return_tensors="pt")
 
-generatedText = processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
+outputs = model.generate(**inputs, max_new_tokens=1024)
+
+generatedText = processor.batch_decode(outputs, skip_special_tokens=False)[0]
 
 print(generatedText)
