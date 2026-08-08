@@ -4,3 +4,4 @@ cvzone
 numpy
 ultralytics
 transformers
+Pillow

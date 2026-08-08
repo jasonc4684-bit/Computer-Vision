@@ -1,9 +1,10 @@
-import cv2
-from transformers import pipeline
+from PIL import Image
+from transformers import TrOCRProcessor, VisionEncoderDecoderModel
 
-pipe = pipeline("image-text-to-text", model="microsoft/trocr-base-printed")
+processor = TrOCRProcessor.from_pretrained("microsoft/trocr-base-printed")
 
-img = "AI_vision/text.png"
+
+img = "AI_vision/img.png"
 result = pipe(img)
 
 print(result[0]["generated_text"])
