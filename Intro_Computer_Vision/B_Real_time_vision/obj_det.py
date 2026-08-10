@@ -6,7 +6,7 @@ import cvzone
 cam = 0
 vid = cv2.VideoCapture(cam)
 
-yoloModel = "best.pt" # change "s" if larger data is needed (ex."m")
+yoloModel = "C:/Users/yingl/OneDrive/Computer-Vision-Project-main/Intro_Computer_Vision/B_Real_time_vision/best (1).pt" # change "s" if larger data is needed (ex."m")
 model = YOLO(yoloModel)
 
 while True:
