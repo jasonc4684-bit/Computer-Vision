@@ -6,7 +6,7 @@ import cvzone
 cam = 0
 vid = cv2.VideoCapture(cam)
 
-yoloModel = "best(1).pt" # change "s" if larger data is needed (ex."m")
+yoloModel = "best.pt" # change "s" if larger data is needed (ex."m")
 model = YOLO(yoloModel)
 
 while True:
