@@ -5,5 +5,7 @@ import matplotlib.pyplot as plt
 import random
 
 # Creating random tensors
-Matrix = torch.rand(random.randint(0,10),random.randint(0,10))
-print(Matrix)
+imgHeight = 224
+imgWidth = 224
+Matrix = torch.rand(size=(3,imgHeight, imgWidth))
+print(Matrix.ndim, Matrix.shape)
