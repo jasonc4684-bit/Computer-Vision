@@ -6,7 +6,7 @@ import cvzone
 cam = 0
 vid = cv2.VideoCapture(cam)
 
-yoloModel = "../Intro_Computer_Vision/B_Real_time_vision/best (3).pt" # change "s" if larger data is needed (ex."m")
+yoloModel = "/Users/1045624/Downloads/Computer-Vision-main 2/Computer-Vision/Intro_Computer_Vision/B_Real_time_vision/R.P.S.pt" # copy path if needed from different devices
 model = YOLO(yoloModel)
 
 while True:
