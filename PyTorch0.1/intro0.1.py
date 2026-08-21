@@ -4,7 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 
-# Adjusting tensor's dtype
+# Adjusting tensor's dtype, 
+#dtype usuall caused 3 errors: incorrect datatype, shapes, and device
 
 output = torch.tensor([1,3,5,7], 
                     dtype=torch.float16,      # tensor type
@@ -12,5 +13,6 @@ output = torch.tensor([1,3,5,7],
                     requires_grad=False)
 
 print(output)
+
 
 
