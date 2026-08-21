@@ -6,7 +6,10 @@ import random
 
 # Adjusting tensor's dtype
 
-output = torch.tensor([1,3,5,7], dtype=torch.float64)
+output = torch.tensor([1,3,5,7], 
+                    dtype=torch.float16,      # tensor type
+                    device = None,            #
+                    requires_grad=False)
 
 print(output)
 
