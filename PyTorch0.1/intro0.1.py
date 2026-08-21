@@ -7,10 +7,12 @@ import random
 # Adjusting tensor's dtype, 
 #dtype usuall caused 3 errors: incorrect datatype, shapes, and device
 
+#checks device 
+
 output = torch.tensor([1,3,5,7], 
                     dtype=torch.float16,      # tensor type
-                    device = None,            #
-                    requires_grad=False)
+                    device = None,            # which device to use, ex. GPU
+                    requires_grad=False)      # checks gradients
 
 print(output)
 
