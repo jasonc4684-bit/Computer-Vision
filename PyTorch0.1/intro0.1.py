@@ -4,8 +4,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 
-# Creating zeros tensors
+# Adjusting tensor's dtype
 
+output = torch.tensor([1,3,5,7], dtype=torch.float64)
 
-print(torch.arange(start=0, end=1000, step=20))
+print(output)
+
 
