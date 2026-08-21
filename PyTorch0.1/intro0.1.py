@@ -6,6 +6,6 @@ import random
 
 # Creating zeros tensors
 
-zeros = torch.zeros(3,4)
-print(zeros)
+
+print(torch.arange(start=0, end=1000, step=20))
 
