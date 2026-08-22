@@ -10,16 +10,12 @@ import random
 #checks device 
 
 output = torch.tensor([1,3,5,7], 
-                    dtype=torch.float16,      # tensor type
+                    dtype=torch.int16,      # tensor type
                     device = None,            # which device to use, ex. GPU
                     requires_grad=False)      # checks gradients
 
-output2 = torch.tensor([2,4,6,8], 
-                    dtype=torch.int32,      # tensor type
-                    device = None,            # which device to use, ex. GPU
-                    requires_grad=False) 
 
-print(output*output2)
+print(output * 2)
 
 
 
