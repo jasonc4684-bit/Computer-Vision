@@ -7,6 +7,6 @@ import random
 
 # using torch to manipulate/ find info about the data
 
-output = torch.arange(0, 100, 20)
+output = torch.arange(10, 150, 23)
 
-print(output.min(), output.max(), output.type(torch.float32).mean(), output.sum())
+print(output.argmin(), torch.argmax(output), output[0], output[6])
