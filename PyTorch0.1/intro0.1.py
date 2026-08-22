@@ -8,8 +8,17 @@ import random
 #dtype usuall caused 3 errors: incorrect datatype, shapes, and device
 
 #checks device 
+# 2x3
+output = torch.tensor([[1,3,5],
+                        [2,4,6]], 
+                    dtype=torch.int16,      # tensor type
+                    device = None,            # which device to use, ex. GPU
+                    requires_grad=False)      # checks gradients
 
-output = torch.tensor([1,3,5,7], 
+#3x2
+output2 = torch.tensor([[1,3],
+                        [2,4],
+                        [3,5]], 
                     dtype=torch.int16,      # tensor type
                     device = None,            # which device to use, ex. GPU
                     requires_grad=False)      # checks gradients
@@ -17,6 +26,7 @@ output = torch.tensor([1,3,5,7],
 #matrix multiplication, 
 # inner dimensions must be identical and 
 # shape will be the outer dimensions
-print(torch.matmul(output, output)) 
+
+print(torch.mm(output, output)) 
 
 
