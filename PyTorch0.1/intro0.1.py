@@ -9,4 +9,4 @@ import random
 
 output = torch.arange(0, 100, 20)
 
-print(output.min(), output.max(), torch.mean(output.type(torch.float32)))
+print(output.min(), output.max(), output.type(torch.float32).mean(), output.sum())
