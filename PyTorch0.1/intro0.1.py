@@ -14,7 +14,12 @@ output = torch.tensor([1,3,5,7],
                     device = None,            # which device to use, ex. GPU
                     requires_grad=False)      # checks gradients
 
-print(output)
+output2 = torch.tensor([2,4,6,8], 
+                    dtype=torch.int32,      # tensor type
+                    device = None,            # which device to use, ex. GPU
+                    requires_grad=False) 
+
+print(output*output2)
 
 
 
