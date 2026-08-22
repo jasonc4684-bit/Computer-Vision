@@ -8,4 +8,5 @@ import random
 # using torch to manipulate/ find info about the data
 
 output = torch.arange(0, 100, 20)
-print(output)
+
+print(output.min(), output.max(), torch.mean(output.type(torch.float32)))
