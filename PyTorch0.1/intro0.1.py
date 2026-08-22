@@ -23,11 +23,14 @@ output2 = torch.tensor([[1,3],
                     device = None,            # which device to use, ex. GPU
                     requires_grad=False)      # checks gradients
 
-output3 = output2.T
+matrix_mul = torch.mm(output, output2)
 #matrix multiplication, 
 # inner dimensions must be identical and 
 # shape will be the outer dimensions
 
 #print(torch.mm(output, output2), output.shape, output2.shape) 
-print(output2.shape, output3.shape)
+print(f"Original shape for A is {output.shape}, and B is {output2.shape}")
+print(f"After the transpose, A stays the same {output.shape}, but B changed to {output2.T.shape}")
+print(f"The matrix multiplication output: {matrix_mul}\n")
+print(matrix_mul.shape)
 
