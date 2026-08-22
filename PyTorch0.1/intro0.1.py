@@ -23,10 +23,11 @@ output2 = torch.tensor([[1,3],
                     device = None,            # which device to use, ex. GPU
                     requires_grad=False)      # checks gradients
 
+output3 = output2.T
 #matrix multiplication, 
 # inner dimensions must be identical and 
 # shape will be the outer dimensions
 
-print(torch.mm(output, output2), output.shape, output2.shape) 
-
+#print(torch.mm(output, output2), output.shape, output2.shape) 
+print(output2.shape, output3.shape)
 
