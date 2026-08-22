@@ -14,8 +14,10 @@ output = torch.tensor([1,3,5,7],
                     device = None,            # which device to use, ex. GPU
                     requires_grad=False)      # checks gradients
 
+#element else multiplication
+print(output * output)
 
-print(output * 2)
-
+#matrix multiplication
+print(torch.matmul(output, output)) 
 
 
