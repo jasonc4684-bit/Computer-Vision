@@ -7,10 +7,10 @@ Cam = 0
 vid = cv2.VideoCapture(Cam)
 
 #                                    True to reset color det.
-myColorFinder = ColorFinder(trackBar=False)
+myColorFinder = ColorFinder(trackBar=True)
 
 # empty the bracket to reset color det.
-hsvVal = {'hmin': 108, 'smin': 67, 'vmin': 63, 'hmax': 179, 'smax': 255, 'vmax': 255}
+hsvVal = {}
 
 while True:
     success, img = vid.read()
