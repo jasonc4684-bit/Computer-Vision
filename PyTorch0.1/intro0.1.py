@@ -27,6 +27,6 @@ output2 = torch.tensor([[1,3],
 # inner dimensions must be identical and 
 # shape will be the outer dimensions
 
-print(torch.mm(output, output)) 
+print(torch.mm(output, output2), output.shape, output2.shape) 
 
 
