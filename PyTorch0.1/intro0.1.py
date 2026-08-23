@@ -5,9 +5,10 @@ import matplotlib.pyplot as plt
 import random
 
 
-# using torch to manipulate/ find info about the data
+# squeeze() remove one dimesion
 
 x = torch.tensor([[5,6,7]])
-print(x.shape)
+print(f"X: {x}, and its shape is {x.shape}")
+squeezed_x = x.squeeze()
 
-print(x.squeeze().shape)
+print(f"with added squeeze(), x changed to {squeezed_x} and shape is {squeezed_x.shape}")
