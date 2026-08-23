@@ -7,7 +7,15 @@ import random
 
 # using torch to manipulate/ find info about the data
 
-output = torch.arange(1., 20.)
-print(output)
-output2 = output.reshape(19, 1)
-print(output2, output2.shape)
+original = torch.arange(1., 21.)
+print(original)
+
+reshape = original.reshape(4, 5)
+view = original.view(4,5)
+
+print(reshape, reshape.shape)
+
+view[:, 0] = 30
+
+print(view, view.shape)
+print(original)
