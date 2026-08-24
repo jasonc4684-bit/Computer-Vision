@@ -24,3 +24,5 @@ print(torch_data)
 to_np = torch_data.numpy()
 print(to_np)
 
+torch_data = torch_data + 1
+print(torch_data, to_np)
