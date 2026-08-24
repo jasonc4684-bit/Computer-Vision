@@ -39,3 +39,8 @@ print(tensor_1.shape)
 tensor_2 = torch.rand(1,7)
 matmul_1_and_2 = torch.mm(tensor_1, tensor_2.T)
 print(matmul_1_and_2, matmul_1_and_2.shape)
+
+print(sum(matmul_1_and_2), max(matmul_1_and_2), min(matmul_1_and_2), 
+        matmul_1_and_2.type(torch.float32).mean())
+
+print(matmul_1_and_2.argmax(), matmul_1_and_2.argmin())
