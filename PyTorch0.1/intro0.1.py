@@ -5,24 +5,13 @@ import matplotlib.pyplot as plt
 import random
 
 
-# PyTorch & NumPy
+# reproducibility, also reduced randomness
+random_seed = 42
+torch.manual_seed(random_seed)
 
-# utilize torch.from_numpy() in translating NumPy data to PyTorch for deep learning
-# use torch.Tensor.numpy to translating data to NumPy, both share the same memory
 
-# default dtype for numpy is int64
+tensor_1 = torch.rand(3,4)
+tensor_2 = torch.rand(3,4)
 
-np_data = np.arange(1, 10)
-print(np_data)
-
-to_torch = torch.from_numpy(np_data) 
-print(to_torch)
-
-torch_data = torch.arange(-10,-1)
-print(torch_data)
-
-to_np = torch_data.numpy()
-print(to_np)
-
-torch_data = torch_data + 1
-print(torch_data, to_np)
+print(f"first tensor {tensor_1}, second tensor {tensor_2}")
+print(tensor_1 == tensor_2)
