@@ -18,9 +18,9 @@ print(np_data)
 to_torch = torch.from_numpy(np_data) 
 print(to_torch)
 
-torch_data = torch.arange(1,10)
+torch_data = torch.arange(-10,-1)
 print(torch_data)
 
-to_np = torch.Tensor.numpy(to_torch)
+to_np = torch_data.numpy()
 print(to_np)
 
