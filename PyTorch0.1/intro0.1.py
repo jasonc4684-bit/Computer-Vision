@@ -5,5 +5,8 @@ import matplotlib.pyplot as plt
 import random
 
 
-# Accessing/ Running on GPU 
+# Accessing/ Running on GPU/ required to transport code to google colab
 
+# check gpu availability
+
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
