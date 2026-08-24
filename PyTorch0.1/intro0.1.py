@@ -8,5 +8,5 @@ import random
 # Indexing in PyTorch
 
 x = torch.arange(1,31).reshape(3,2,5)
-print(x)
-print(x[2,0,4])
+
+print(x[1:, :, 3])
