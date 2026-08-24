@@ -7,13 +7,15 @@ import random
 
 # PyTorch & NumPy
 
-# utilize torch.from_numpy() in translating NumPy data to PyTorch for deep learning , different memory
-# use torch.Tensor.numpy to translating data to NumPy
+# utilize torch.from_numpy() in translating NumPy data to PyTorch for deep learning
+# use torch.Tensor.numpy to translating data to NumPy, both share the same memory
+
+# default dtype for numpy is int64
 
 np_data = np.arange(1, 10)
 print(np_data)
 
-to_torch = torch.from_numpy(np_data) # default dtype is int64 from numpy
+to_torch = torch.from_numpy(np_data) 
 print(to_torch)
 
 torch_data = torch.arange(1,10)
@@ -21,3 +23,4 @@ print(torch_data)
 
 to_np = torch.Tensor.numpy(to_torch)
 print(to_np)
+
