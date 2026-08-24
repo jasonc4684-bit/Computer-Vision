@@ -7,6 +7,7 @@ import random
 
 # Indexing in PyTorch
 
-x = torch.arange(1,31).reshape(3,2,5)
+x = torch.arange(1,10).reshape(1,3,3)
 
-print(x[1:, :, 3])
+print(x[0,2,2])
+print(x[:, :, 2])
