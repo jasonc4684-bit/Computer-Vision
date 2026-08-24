@@ -5,9 +5,7 @@ import matplotlib.pyplot as plt
 import random
 
 
-# Indexing in PyTorch
+# PyTorch & NumPy
 
-x = torch.arange(1,10).reshape(1,3,3)
-
-print(x[0,2,2])
-print(x[:, :, 2])
+# utilize torch.from_numpy() in translating NumPy data to PyTorch for deep learning 
+# use torch.Tensor.numpy to translating data to NumPy
