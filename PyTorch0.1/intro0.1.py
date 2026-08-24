@@ -44,3 +44,11 @@ print(sum(matmul_1_and_2), max(matmul_1_and_2), min(matmul_1_and_2),
         matmul_1_and_2.type(torch.float32).mean())
 
 print(matmul_1_and_2.argmax(), matmul_1_and_2.argmin())
+
+torch.manual_seed(7)
+
+torch_3 = torch.rand(1,1,1,10)
+torch_4 = torch_3.squeeze()
+print(torch_3, torch_3.shape, torch_4, torch_4.shape)
+
+
