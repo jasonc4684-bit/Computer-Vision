@@ -13,7 +13,14 @@ print(f"X: {x}, and its shape is {x.shape}")
 squeezed_x = x.squeeze()
 print(f"with added squeeze(), x changed to {squeezed_x} and shape is {squeezed_x.shape}")
 
+#unsqueeze
 y = torch.tensor([5,6,7])
 unsqueeze_y = y.unsqueeze(dim=0)
 print(f"y has tensor {y} with shape {y.shape}")
 print(f"with unsquezzed, {unsqueeze_y} with shape of {unsqueeze_y.shape}")
+
+# permute
+order = torch.randn(3, 2, 7)
+print(f"the order's shape is {order.shape}")
+permute_order = torch.permute(order, (1,0,2))
+print(f"after permute, it has shape {permute_order}")
