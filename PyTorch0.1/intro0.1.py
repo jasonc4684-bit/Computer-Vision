@@ -28,3 +28,14 @@ print(tensor_1.shape)
 tensor_2 = torch.rand(1,7)
 matmul_1_and_2 = torch.mm(tensor_1, tensor_2.T)
 print(matmul_1_and_2, matmul_1_and_2.shape)
+
+# using seed() to do excercise 1 and 2
+
+random_seed = 0
+torch.manual_seed(random_seed)
+tensor_1 = torch.rand(7,7)
+print(tensor_1.shape)
+
+tensor_2 = torch.rand(1,7)
+matmul_1_and_2 = torch.mm(tensor_1, tensor_2.T)
+print(matmul_1_and_2, matmul_1_and_2.shape)
