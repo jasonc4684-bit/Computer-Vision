@@ -21,4 +21,8 @@ step = 0.02
 X = torch.arange(start, end, step).unsqueeze(dim=1)
 y = weight * X + bias
 
-print(X[:10], y[:10], len(X), len(y))
+# data split
+training_set = (0.8 * len(X))
+traing_X, train_y = X[:testing_set], y[:testing_set] 
+
+tets_X, test_y = X[testing_set:], y[testing_set:] 
