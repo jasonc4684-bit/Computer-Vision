@@ -64,15 +64,15 @@ def plotdata(train_data=training_X,
 
     plt.scatter(test_X, test_y, s=4, c='r', label='Testing data')
 
-    if prediction:
+    if prediction is not None:
         plt.scatter(test_X, prediction, s=4, c='g', label="Prediction")
 
     plt.legend(prop={"size":14})
     plt.show()
 
-with torch.inference_mode():
+with torch.inference_mode(): # disabiling the gradeint tracking if not training
     y_predic = model_0(test_X)
 
 print(y_predic)  
 
-plot_data(prediction=y_predic)
+plotdata(prediction=y_predic) # plotting the differences between known data and pretrained data
