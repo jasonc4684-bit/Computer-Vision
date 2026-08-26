@@ -7,6 +7,21 @@ import random
 from torch import nn # contains building block for pytorch's neural network
 
 # building model 
+weight = 0.7
+bias = 0.3
+
+start = 0
+end = 1
+step = 0.02
+
+X = torch.arange(start, end, step).unsqueeze(dim=1)
+y = weight * X + bias
+
+# data split
+training_set = int(0.8 * len(X))
+training_X, training_y = X[:training_set], y[:training_set] 
+
+test_X, test_y = X[training_set:], y[training_set:] 
 
 class LinearRegModel(nn.Module): # inherit nn.Module for useful prebuilt tools
     def __init__(self):
@@ -36,3 +51,6 @@ class LinearRegModel(nn.Module): # inherit nn.Module for useful prebuilt tools
 torch.manual_seed(42)
 model_0 = LinearRegModel()
 print(list(model_0.parameters()), model_0.state_dict()) 
+
+with torch.inference_mode():
+    y_predic = model_0(te)
