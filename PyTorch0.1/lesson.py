@@ -78,6 +78,9 @@ print(y_predic)
 plotdata(prediction=y_predic) # plotting the differences between known data and pretrained data
 
 # loss/cost/criteria function measures the distance apart is the prediction
-    #ex. nn.L1Loss() uses MAE(mean abs. error) between x and y
+    #ex. nn.L1Loss() uses MAE(mean abs. error) between x and y, which nn.MSELoss uses mean^2
+    # nn.L1Loss() = torch.mean(abs(y_predic - y_test))
+
+loss_fn = nn.L1Loss()
 
 # optimizers - account the loss and adjust the model's parameters
