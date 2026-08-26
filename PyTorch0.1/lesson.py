@@ -78,5 +78,6 @@ print(y_predic)
 plotdata(prediction=y_predic) # plotting the differences between known data and pretrained data
 
 # loss/cost/criteria function measures the distance apart is the prediction
-# optimizers - account the loss and adjust the model's parameters
+    #ex. nn.L1Loss() uses MAE(mean abs. error) between x and y
 
+# optimizers - account the loss and adjust the model's parameters
