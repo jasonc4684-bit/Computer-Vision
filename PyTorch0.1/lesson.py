@@ -11,8 +11,10 @@ from torch import nn # contains building block for pytorch's neural network
 class LinearRegModel(nn.Module): # inherit nn.Module for useful prebuilt tools
     def __init__(self):
         super().__init__() # access all methods from nn.Module
+
+        #nn.Paramter auto assign and train the left_side to deep learning afterward
         self.weights = nn.Parameter(torch.randn(1,
-                                                requires_grad=True,
+                                                requires_grad=True, #optimizes the loss function
                                                 dtype=torch.float))
 
         self.bias = nn.Parameter(torch.randn(1,
