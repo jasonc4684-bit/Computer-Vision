@@ -31,3 +31,7 @@ class LinearRegModel(nn.Module): # inherit nn.Module for useful prebuilt tools
 # torch.optim() optimizes/help with gradient descent
 #torch.utils.data.Dataset() map the key and sample pair 
 #torch.utils.data.Dataloader() iterate over the torch Dataset
+
+# setting seed
+torch.manual_seed(42)
+model_0 = LinearRegModel()
