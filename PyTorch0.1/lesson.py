@@ -68,6 +68,7 @@ def plotdata(train_data=training_X,
         plt.scatter(test_X, prediction, s=4, c='g', label="Prediction")
 
     plt.legend(prop={"size":14})
+    plt.show()
 
 with torch.inference_mode():
     y_predic = model_0(test_X)
