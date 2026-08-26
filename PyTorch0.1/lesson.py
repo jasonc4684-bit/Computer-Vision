@@ -84,3 +84,5 @@ plotdata(prediction=y_predic) # plotting the differences between known data and 
 loss_fn = nn.L1Loss()
 
 # optimizers - account the loss and adjust the model's parameters
+
+optim_fn = torch.optim.SGD() #stochastic gradient descent optimizer
