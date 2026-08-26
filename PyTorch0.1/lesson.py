@@ -28,3 +28,4 @@ class LinearRegModel(nn.Module): # inherit nn.Module for useful prebuilt tools
         return self.weights * x + self.bias         # linear regression 
 
         
+# torch.optim() optimizes/help with gradient descent
