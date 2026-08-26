@@ -52,5 +52,26 @@ torch.manual_seed(42)
 model_0 = LinearRegModel()
 print(list(model_0.parameters()), model_0.state_dict()) 
 
+
+def plotdata(train_data=training_X, 
+            train_label=training_y,
+            test_data=test_X,
+            test_label=test_y,
+            prediction=None):
+    plt.figure(figsize=(10,7))
+
+    plt.scatter(training_X, training_y, s=4, c='b', label='Training data')
+
+    plt.scatter(test_X, test_y, s=4, c='r', label='Testing data')
+
+    if prediction:
+        plt.scatter(test_X, prediction, s=4, c='g', label="Prediction")
+
+    plt.legend(prop={"size":14})
+
 with torch.inference_mode():
-    y_predic = model_0(te)
+    y_predic = model_0(test_X)
+
+print(y_predic)  
+
+plot_data(prediction=y_predic)
