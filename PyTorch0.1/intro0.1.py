@@ -19,3 +19,5 @@ class LinearRegModel(nn.Module): # inherit nn.Module for useful prebuilt tools
                                                 requires_grad=True,
                                                 dtype=torch.float))
     
+    def forward(self, x:torch.Tensor) -> torch.Tensor: #expects input x to be same with output, torch.Tensor
+        return self.weights * x + self.bias         # linear regression 
