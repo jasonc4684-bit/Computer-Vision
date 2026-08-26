@@ -35,3 +35,4 @@ class LinearRegModel(nn.Module): # inherit nn.Module for useful prebuilt tools
 # setting seed
 torch.manual_seed(42)
 model_0 = LinearRegModel()
+print(list(model_0.parameters()), model_0.state_dict()) 
