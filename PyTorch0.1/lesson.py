@@ -6,6 +6,16 @@ import random
 
 from torch import nn # contains building block for pytorch's neural network
 
+'''
+training loop steps
+0. loop over the data
+1. forward pass, utilizing `forward` function
+2. loss calculation
+3. optimizer zero grad
+4. loss backward, backpropagation
+5. optimizer step, adjust parameters and improve - loss gradient descent
+'''
+
 # building model 
 weight = 0.7
 bias = 0.3
@@ -88,4 +98,3 @@ loss_fn = nn.L1Loss()
 optim_fn = torch.optim.SGD(params=model_0.parameters(), #stochastic gradient descent optimizer
                             lr=0.01) #learning rate, propotion to change in parameters 
 
-# training loop
