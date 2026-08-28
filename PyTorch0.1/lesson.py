@@ -87,3 +87,5 @@ loss_fn = nn.L1Loss()
 
 optim_fn = torch.optim.SGD(params=model_0.parameters(), #stochastic gradient descent optimizer
                             lr=0.01) #learning rate, propotion to change in parameters 
+
+# training loop
