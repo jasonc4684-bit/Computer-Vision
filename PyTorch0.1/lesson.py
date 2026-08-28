@@ -99,23 +99,23 @@ optim_fn = torch.optim.SGD(params=model_0.parameters(), #stochastic gradient des
                             lr=0.01) #learning rate, propotion to change in parameters 
 
 # epochs, loops
-epochs = 1
+epochs = 10
 for epoch in range(epochs):
     model_0.train() # auto enables required-gradients
 
-    #1. forward pass
+    #1. forward pass 
     y_pred = model_0(test_X)
 
     #2. loss func
     loss = loss_fn(y_pred, training_y) # (input, target)
 
     #3. zero grad 
-    optimizer.zero_grad()
+    optim_fn.zero_grad()
 
     #4. backpropagation
     loss.backward()
 
     #5. step
-    optimizer.step()
-    
+    optim_fn.step()
+
     model_0.eval() # disables required-gradients
