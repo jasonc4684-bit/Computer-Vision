@@ -98,3 +98,15 @@ loss_fn = nn.L1Loss()
 optim_fn = torch.optim.SGD(params=model_0.parameters(), #stochastic gradient descent optimizer
                             lr=0.01) #learning rate, propotion to change in parameters 
 
+# epochs, loops
+epochs = 1
+for epoch in range(epochs):
+    model_0.train() # auto enables required-gradients
+
+    #forward pass
+    y_pred = model_0(test_X)
+
+    #loss func
+    loss = loss_fn(y_pred, training_y)
+
+    model_0.eval() # disables required-gradients
