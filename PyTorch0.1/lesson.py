@@ -85,7 +85,7 @@ def plotdata(
         plt.scatter(test_X, prediction, s=4, c="g", label="Prediction")
 
     plt.legend(prop={"size": 14})
-    plt.show()
+    plt.savefig('my_plot.png')
 
 
 with torch.inference_mode():  # disabiling the gradeint tracking if not training
@@ -110,17 +110,17 @@ optim_fn = torch.optim.SGD(
 )  # learning rate, propotion to change in parameters
 
 # epochs, loops
-epochs = 10
+epochs = 200
 
 epoch_list = []
-loss = []
-test_loss = []
+loss_list = []
+test_loss_list = []
 
 for epoch in range(epochs):
     model_0.train()  # auto enables required-gradients
 
     # 1. forward pass
-    y_pred = model_0(test_X)
+    y_pred = model_0(training_X)
 
     # 2. loss func
     loss = loss_fn(y_pred, training_y)  # (input, target)
@@ -139,22 +139,23 @@ for epoch in range(epochs):
         # forward pass
         y_pred = model_0(test_X)
         # loss
-        loss_test = loss_fn(y_pred, test_y)
+        loss_test = loss_fn(y_pred, test_y.type(torch.float))
 
     # print current loss
     if epoch % 10 == 0:
         epoch_list.append(epoch)
-        loss.append(loss)
-        test_loss.append(loss_test)
+        loss_list.append(loss.detach().numpy())
+        test_loss_list.append(loss_test.detach().numpy())
 
         print(f"epoch {epoch}, loss {loss}, test loss {loss_test}")
 
         print(model_0.state_dict())
 
-plt.plot(epoch, np.array(torch.tensor(loss).cpu().numpy()), label="loss from epoch")
-plt.plot(epoch, np.array(torch.tensor(test_lossloss).cpu().numpy()), label="test_loss from epoch")
+plt.figure(figsize=(10, 7))
+plt.plot(epoch_list, loss_list, label="loss from epoch")
+plt.plot(epoch_list, test_loss_list, label="test_loss from epoch")
 plt.title("loss values from each generated epoch")
 plt.xlabel("epoch")
 plt.ylabel("loss")
-plt.legend()
-plt.show()
+plt.legend() 
+plt.savefig('my_train_plot.png')
