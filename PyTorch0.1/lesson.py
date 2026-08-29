@@ -27,7 +27,7 @@ step = 0.02
 X = torch.arange(start, end, step).unsqueeze(dim=1)
 y = weight * X + bias
 
-# data split
+# data split 
 training_set = int(0.8 * len(X))
 training_X, training_y = X[:training_set], y[:training_set] 
 
@@ -119,3 +119,10 @@ for epoch in range(epochs):
     optim_fn.step()
 
     model_0.eval() # disables required-gradients
+    with torch.inference_mode():
+        # forward pass
+        y_pred = model_0(test_X)
+        #loss
+        loss = loss_fn(y_pred, test_y)
+
+print(model_0.state_dict())
