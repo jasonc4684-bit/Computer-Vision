@@ -156,3 +156,10 @@ plt.xlabel("epoch")
 plt.ylabel("loss")
 plt.legend() 
 plt.savefig('my_train_plot.png')
+
+'''
+saving/loading training data
+0. torch.save() - return python's pickle format
+1. torch.load() - load a saved object
+2. torch.nn.Module.load_state_dict() - load the model's saved state dictionary
+'''
