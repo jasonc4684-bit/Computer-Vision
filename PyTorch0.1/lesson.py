@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import random
+from pathlib import Path
 
 from torch import nn  # contains building block for pytorch's neural network
 
@@ -56,9 +57,11 @@ class LinearRegModel(nn.Module):  # inherit nn.Module for useful prebuilt tools
     ) -> torch.Tensor:  # expects input x to be same with output, torch.Tensor
         return self.weights * x + self.bias  # linear regression
 
-# torch.optim() optimizes/help with gradient descent
-# torch.utils.data.Dataset() map the key and sample pair
-# torch.utils.data.Dataloader() iterate over the torch Dataset
+'''
+torch.optim() optimizes/help with gradient descent
+torch.utils.data.Dataset() map the key and sample pair
+ torch.utils.data.Dataloader() iterate over the torch Dataset
+'''
 
 # setting seed
 torch.manual_seed(42)
@@ -163,3 +166,14 @@ saving/loading training data
 1. torch.load() - load a saved object
 2. torch.nn.Module.load_state_dict() - load the model's saved state dictionary
 '''
+#creating path
+model_path = Path("model_data")
+model_path.mkdir(parents=True, exist_ok=true)
+
+#model save path
+model_name = "01_model_linear_regression_for_7/3_split.pt"
+
+model_save_path = model_path / model_name
+
+#saving current model's state dict
+torch.save(model_0.state_dict(), model_path)
