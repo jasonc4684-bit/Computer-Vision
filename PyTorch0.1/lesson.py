@@ -111,6 +111,11 @@ optim_fn = torch.optim.SGD(
 
 # epochs, loops
 epochs = 10
+
+epochs = []
+loss = []
+test_loss = []
+
 for epoch in range(epochs):
     model_0.train()  # auto enables required-gradients
 
@@ -138,6 +143,10 @@ for epoch in range(epochs):
 
     # print current loss
     if epoch % 10 == 0:
+        epoch.append(epoch)
+        loss.append(loss)
+        test_loss.append(loss_test)
+        
         print(f"epoch {epoch}, loss {loss}, test loss {loss_test}")
 
-print(model_0.state_dict())
+        print(model_0.state_dict())
