@@ -167,11 +167,11 @@ saving/loading training data
 2. torch.nn.Module.load_state_dict() - load the model's saved state dictionary
 '''
 #creating path
-model_path = Path("model_data")
-model_path.mkdir(parents=True, exist_ok=true)
+model_path = Path("model_0")
+model_path.mkdir(parents=True, exist_ok=True)
 
 #model save path
-model_name = "01_model_linear_regression_for_7/3_split.pt"
+model_name = "01_model_linear_regression_for_73_split.pt"
 
 model_save_path = model_path / model_name
 
