@@ -112,7 +112,7 @@ optim_fn = torch.optim.SGD(
 # epochs, loops
 epochs = 10
 
-epochs = []
+epoch_list = []
 loss = []
 test_loss = []
 
@@ -143,10 +143,18 @@ for epoch in range(epochs):
 
     # print current loss
     if epoch % 10 == 0:
-        epoch.append(epoch)
+        epoch_list.append(epoch)
         loss.append(loss)
         test_loss.append(loss_test)
-        
+
         print(f"epoch {epoch}, loss {loss}, test loss {loss_test}")
 
         print(model_0.state_dict())
+
+plt.plot(epoch, np.array(torch.tensor(loss).cpu().numpy()), label="loss from epoch")
+plt.plot(epoch, np.array(torch.tensor(test_lossloss).cpu().numpy()), label="test_loss from epoch")
+plt.title("loss values from each generated epoch")
+plt.xlabel("epoch")
+plt.ylabel("loss")
+plt.legend()
+plt.show()
