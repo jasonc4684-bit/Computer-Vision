@@ -4,9 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 
-from torch import nn # contains building block for pytorch's neural network
+from torch import nn  # contains building block for pytorch's neural network
 
-'''
+"""
 training loop steps
 0. loop over the data
 1. forward pass, utilizing `forward` function
@@ -14,9 +14,9 @@ training loop steps
 3. optimizer zero grad
 4. loss backward, backpropagation
 5. optimizer step, adjust parameters and improve - loss gradient descent
-'''
+"""
 
-# building model 
+# building model
 weight = 0.7
 bias = 0.3
 
@@ -27,102 +27,117 @@ step = 0.02
 X = torch.arange(start, end, step).unsqueeze(dim=1)
 y = weight * X + bias
 
-# data split 
+# data split
 training_set = int(0.8 * len(X))
-training_X, training_y = X[:training_set], y[:training_set] 
+training_X, training_y = X[:training_set], y[:training_set]
 
-test_X, test_y = X[training_set:], y[training_set:] 
+test_X, test_y = X[training_set:], y[training_set:]
 
-class LinearRegModel(nn.Module): # inherit nn.Module for useful prebuilt tools
+
+class LinearRegModel(nn.Module):  # inherit nn.Module for useful prebuilt tools
     def __init__(self):
-        super().__init__() # access all methods from nn.Module
+        super().__init__()  # access all methods from nn.Module
 
-        #Initializing 
+        # Initializing
 
-        #nn.Paramter auto assign and train the left_side to deep learning afterward
-        self.weights = nn.Parameter(torch.randn(1,      # starts off a random value
-                                                requires_grad=True, #optimizes the loss function
-                                                dtype=torch.float))  #default to float32
+        # nn.Paramter auto assign and train the left_side to deep learning afterward
+        self.weights = nn.Parameter(
+            torch.randn(
+                1,  # starts off a random value
+                requires_grad=True,  # optimizes the loss function
+                dtype=torch.float,
+            )
+        )  # default to float32
 
-        self.bias = nn.Parameter(torch.randn(1,
-                                                requires_grad=True,
-                                                dtype=torch.float))
-    
-    #Required func for pytorch deeplearning, to override
-    def forward(self, x:torch.Tensor) -> torch.Tensor: #expects input x to be same with output, torch.Tensor
-        return self.weights * x + self.bias         # linear regression 
+        self.bias = nn.Parameter(torch.randn(1, requires_grad=True, dtype=torch.float))
 
-        
+    # Required func for pytorch deeplearning, to override
+    def forward(
+        self, x: torch.Tensor
+    ) -> torch.Tensor:  # expects input x to be same with output, torch.Tensor
+        return self.weights * x + self.bias  # linear regression
+
+
 # torch.optim() optimizes/help with gradient descent
-#torch.utils.data.Dataset() map the key and sample pair 
-#torch.utils.data.Dataloader() iterate over the torch Dataset
+# torch.utils.data.Dataset() map the key and sample pair
+# torch.utils.data.Dataloader() iterate over the torch Dataset
 
 # setting seed
 torch.manual_seed(42)
 model_0 = LinearRegModel()
-print(list(model_0.parameters()), model_0.state_dict()) 
+print(list(model_0.parameters()), model_0.state_dict())
 
 
-def plotdata(train_data=training_X, 
-            train_label=training_y,
-            test_data=test_X,
-            test_label=test_y,
-            prediction=None):
-    plt.figure(figsize=(10,7))
+def plotdata(
+    train_data=training_X,
+    train_label=training_y,
+    test_data=test_X,
+    test_label=test_y,
+    prediction=None,
+):
+    plt.figure(figsize=(10, 7))
 
-    plt.scatter(training_X, training_y, s=4, c='b', label='Training data')
+    plt.scatter(training_X, training_y, s=4, c="b", label="Training data")
 
-    plt.scatter(test_X, test_y, s=4, c='r', label='Testing data')
+    plt.scatter(test_X, test_y, s=4, c="r", label="Testing data")
 
     if prediction is not None:
-        plt.scatter(test_X, prediction, s=4, c='g', label="Prediction")
+        plt.scatter(test_X, prediction, s=4, c="g", label="Prediction")
 
-    plt.legend(prop={"size":14})
+    plt.legend(prop={"size": 14})
     plt.show()
 
-with torch.inference_mode(): # disabiling the gradeint tracking if not training
+
+with torch.inference_mode():  # disabiling the gradeint tracking if not training
     y_predic = model_0(test_X)
 
-print(y_predic)  
+print(y_predic)
 
-plotdata(prediction=y_predic) # plotting the differences between known data and pretrained data
+plotdata(
+    prediction=y_predic
+)  # plotting the differences between known data and pretrained data
 
 # loss/cost/criteria function measures the distance apart is the prediction
-    #ex. nn.L1Loss() uses MAE(mean abs. error) between x and y, which nn.MSELoss uses mean^2
-    # nn.L1Loss() = torch.mean(abs(y_predic - y_test))
+# ex. nn.L1Loss() uses MAE(mean abs. error) between x and y, which nn.MSELoss uses mean^2
+# nn.L1Loss() = torch.mean(abs(y_predic - y_test))
 
 loss_fn = nn.L1Loss()
 
 # optimizers - account the loss and adjust the model's parameters
 
-optim_fn = torch.optim.SGD(params=model_0.parameters(), #stochastic gradient descent optimizer
-                            lr=0.01) #learning rate, propotion to change in parameters 
+optim_fn = torch.optim.SGD(
+    params=model_0.parameters(), lr=0.01  # stochastic gradient descent optimizer
+)  # learning rate, propotion to change in parameters
 
 # epochs, loops
 epochs = 10
 for epoch in range(epochs):
-    model_0.train() # auto enables required-gradients
+    model_0.train()  # auto enables required-gradients
 
-    #1. forward pass 
+    # 1. forward pass
     y_pred = model_0(test_X)
 
-    #2. loss func
-    loss = loss_fn(y_pred, training_y) # (input, target)
+    # 2. loss func
+    loss = loss_fn(y_pred, training_y)  # (input, target)
 
-    #3. zero grad 
+    # 3. zero grad
     optim_fn.zero_grad()
 
-    #4. backpropagation
+    # 4. backpropagation
     loss.backward()
 
-    #5. step
+    # 5. step
     optim_fn.step()
 
-    model_0.eval() # disables required-gradients
+    model_0.eval()  # disables required-gradients
     with torch.inference_mode():
         # forward pass
         y_pred = model_0(test_X)
-        #loss
-        loss = loss_fn(y_pred, test_y)
+        # loss
+        loss_test = loss_fn(y_pred, test_y)
+
+    # print current loss
+    if epoch % 10 == 0:
+        print(f"epoch {epoch}, loss {loss}, test loss {loss_test}")
 
 print(model_0.state_dict())
