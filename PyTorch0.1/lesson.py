@@ -151,6 +151,8 @@ for epoch in range(epochs):
 
         print(model_0.state_dict())
 
+plotdata(prediction=y_pred)
+
 plt.figure(figsize=(10, 7))
 plt.plot(epoch_list, loss_list, label="loss from epoch")
 plt.plot(epoch_list, test_loss_list, label="test_loss from epoch")
